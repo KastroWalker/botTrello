@@ -1,0 +1,5 @@
+USER = 'email_do_trello'
+SENHA = 'senha_do_trello'
+CHROME_DRIVER = 'caminho_para_o_driver_do_seu_navegador'
+CARTAO_TRELLO = 'url_do_seu_cartao_no_trello'
+ARQUIVO_AULAS = 'url_para_o_arquivo_json_onde_esta_as_informacoes_das_aulas'
