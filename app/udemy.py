@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -11,7 +11,8 @@ from tqdm import tqdm
 from selenium import webdriver
 import json
 import time
-from config import *
+from config2 import *
+
 
 def ler_aulas(file_aulas):
     """
@@ -43,11 +44,12 @@ def escreveAula(driver, titulo):
             str(titulo) - nome do modulo
     """
 
-    driver.find_element_by_class_name('checklist-new-item-text').send_keys(titulo)
+    driver.find_element_by_class_name(
+        'checklist-new-item-text').send_keys(titulo)
     driver.find_element_by_class_name('js-add-checklist-item').click()
 
 
-def realizaLogin(driver, email, senha):
+def realizaLogin(driver, email, senha, senha_atlassian):
     """
         Função para realizar login no trello
         Recebe: 
@@ -63,6 +65,14 @@ def realizaLogin(driver, email, senha):
     dar_nome_senha.send_keys(senha)
     dar_nome_botao.click()
 
+    atlassian = input('Realizar login com Atlassian?[s/n]')
+
+    if atlassian == 's':
+        time.sleep(1)
+        driver.find_element_by_id('password').send_keys(senha_atlassian)
+        driver.find_element_by_id('login-submit').click()
+        time.sleep(20)
+
 
 def main():
     # Lendo o nome das aulas
@@ -74,7 +84,7 @@ def main():
 
     # Realizando login no trello
     print("Realizando login no Trello...")
-    realizaLogin(driver, USER, SENHA)
+    realizaLogin(driver, USER, SENHA, SENHA_ATLASSIAN)
     time.sleep(1)
 
     # Inicando Cadastro de aulas
