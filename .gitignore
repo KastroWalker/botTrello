@@ -1,4 +1,11 @@
 app/config2.py
 app/grava_arquivos.py
 app/youtube.py
+app/geckodriver.log
+app/__pycache__/*
+
+app/api/config2.py
+app/api/__pycache__/*
+
 json/grade.json
+json/
